@@ -1,0 +1,134 @@
+@font-face {
+    font-family: "ubuntu";
+    src: url('/assets/fonts/Ubuntu-Bold.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: "ubuntu";
+    src: url('/assets/fonts/Ubuntu-Medium.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: "ubuntu";
+    src: url('/assets/fonts/Ubuntu-Regular.ttf');
+    font-weight: 400;
+}
+* {
+    font-family: "ubuntu";
+    margin: 0;
+}
+body {
+    background-color: hsl(229, 24%, 87%);
+}
+div.main-card {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    padding: 16px;
+    max-width: 900px;
+    width: 70%;
+    height: 70%;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+img.sidebar-bg {
+    position: relative;
+    height: 100%;
+}
+div.sidebar-section {
+    position: relative;
+}
+div.sidebar-data {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+}
+div.sidebar-level {
+    display: flex;
+    margin-bottom: 25px;
+    align-items: center;
+    width: 100%;
+}
+div.sidebar-logo {
+    margin-right: 20px;
+    border: 1px solid white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+}
+div.sidebar-step-1 div.sidebar-logo {
+    background-color: hsl(206, 94%, 87%);
+    color: black;
+}
+p.sidebar-step-label {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: hsl(229, 24%, 87%);
+    margin-bottom: 4px;
+}
+p.sidebar-step-name {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+div.step-1-section {
+    margin: 3% 8%;
+    position: relative;
+    width: 100%;
+}
+h2.step-1-title {
+    font-size: 30px;
+    color: hsl(213, 96%, 18%);
+}
+p.step-1-subtitle {
+    margin-top: 16px;
+    color: hsl(231, 11%, 63%);
+}
+form.step-1-form {
+    margin-top: 32px;
+}
+label.step-1-label {
+    color: hsl(213, 96%, 18%);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+input.default-state {
+    margin-bottom: 20px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: hsl(213, 96%, 18%);
+    border: 1px solid hsl(229, 24%, 87%);
+}
+input.default-state::placeholder {
+    color: hsl(231, 11%, 63%);
+}
+button.submit-step-1 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: hsl(213, 96%, 18%);
+    color: hsl(229, 24%, 87%);
+    border: 1px solid hsl(213, 96%, 18%);
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 16px;
+}
+button.submit-step-1:hover {
+    cursor: pointer;
+    background-color: hsl(213, 96%, 36%);
+    border: 1px solid hsl(213, 96%, 36%);
+}
