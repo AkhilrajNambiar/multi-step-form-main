@@ -51,12 +51,21 @@
     <h2 class="step-1-title">Personal info</h2>
     <p class="step-1-subtitle">Please provide your name, email address, and phone number.</p>
     <form class="step-1-form">
-      <label class="step-1-label">Name</label>
-      <input type="text" name="name-input" class="default-state" placeholder="e.g. Stephen King">
-      <label class="step-1-label">Email Address</label>
-      <input type="email" name="email-input" class="default-state" placeholder="e.g. stephenking@lorem.com">
-      <label class="step-1-label">Phone Number</label>
-      <input type="text" name="phone-input" class="default-state" placeholder="e.g. +1 234 567 890">
+      <div class="name-section">
+        <label class="step-1-label">Name</label>
+        <p class="error-label">This field is required</p>
+        <input type="text" name="name-input" class="default-state name-input" placeholder="e.g. Stephen King">
+      </div>
+      <div class="email-section">
+        <label class="step-1-label">Email Address</label>
+        <p class="error-label">This field is required</p>
+        <input type="email" name="email-input" class="default-state email-input" placeholder="e.g. stephenking@lorem.com">
+      </div>
+      <div class="phone-section">
+        <label class="step-1-label">Phone Number</label>
+        <p class="error-label">This field is required</p>
+        <input type="text" name="phone-input" class="default-state phone-input" placeholder="e.g. +1 234 567 890">
+      </div>
       <div class="background-for-button"></div>
       <button type="submit" class="submit-step-1">Next Step</button>
     </form>
@@ -128,6 +137,6 @@
   Thanks for confirming your subscription! We hope you have fun 
   using our platform. If you ever need support, please feel free 
   to email us at support@loremgaming.com. -->
-
+  <script src="sandbox.js"></script>
 </body>
 </html>

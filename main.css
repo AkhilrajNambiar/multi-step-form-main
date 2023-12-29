@@ -97,11 +97,23 @@ p.step-1-subtitle {
 form.step-1-form {
     margin-top: 32px;
 }
+div.name-section, div.email-section, div.phone-section {
+    position: relative;
+}
 label.step-1-label {
     color: hsl(213, 96%, 18%);
     display: block;
     margin-bottom: 4px;
     font-size: 14px;
+}
+p.error-label {
+    color: hsl(354, 84%, 57%);
+    font-size: 14px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-weight: 500;
+    display: none;
 }
 input.default-state {
     margin-bottom: 20px;
@@ -114,8 +126,19 @@ input.default-state {
     color: hsl(213, 96%, 18%);
     border: 1px solid hsl(229, 24%, 87%);
 }
-input.default-state::placeholder {
+input::placeholder {
     color: hsl(231, 11%, 63%);
+}
+input.error-state {
+    margin-bottom: 20px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 16px;
+    box-sizing: border-box;
+    color: hsl(213, 96%, 18%);
+    border: 1px solid hsl(354, 84%, 57%);
 }
 button.submit-step-1 {
     position: absolute;
