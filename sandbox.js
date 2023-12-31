@@ -1,13 +1,16 @@
+// Sidebar
 let stepOneLogo = document.querySelector('div.sidebar-step-1 div.sidebar-logo');
 let stepTwoLogo = document.querySelector('div.sidebar-step-2 div.sidebar-logo');
 let stepThreeLogo = document.querySelector('div.sidebar-step-3 div.sidebar-logo');
 let stepFourLogo = document.querySelector('div.sidebar-step-4 div.sidebar-logo');
+// Step 1
 let step1Section = document.querySelector('div.step-1-section');
-let step2Section = document.querySelector('div.step-2-section');
 let stepOneForm = document.querySelector('form.step-1-form');
 let nameField = document.querySelector('input.name-input');
 let emailField = document.querySelector('input.email-input');
 let phoneField = document.querySelector('input.phone-input');
+// Step 2
+let step2Section = document.querySelector('div.step-2-section');
 let toggler = document.querySelector('div.toggler');
 let toggle = document.querySelector('div.toggle');
 let planCards = [...document.querySelectorAll('div.plan-card')];
@@ -17,17 +20,25 @@ let monthlyDuration = document.querySelector('p.monthly');
 let yearlyDuration = document.querySelector('p.yearly');
 let stepTwoForm = document.querySelector('form.step-2-form');
 let backToStep1 = document.querySelector('p.back-to-step-1');
+// Step 3
+let step3Section = document.querySelector('div.step-3-section');
+let addOnCards = [...document.querySelectorAll('div.add-on-card')];
+let backToStep2 = document.querySelector('p.back-to-step-2');
+
 const emptyGamingPlan = {
     "name": "",
     "email": "",
     "phoneNumber": "",
     "planName": "",
     "planPricing": "",
-    "duration": ""
+    "duration": "",
+    "addOns": []
 };
 let gamingPlan = emptyGamingPlan;
 let monthlyPricings = ['$9/mo', '$12/mo', '$15/mo'];
 let yearlyPricings = ['$90/yr', '$120/yr', '$150/yr'];
+let monthlyAddonPricings = ['+$1/mo', '+$2/mo', '+$2/mo'];
+let yearlyAddonPricings = ['+$10/yr', '+$20/yr', '+$20/yr'];
 
 let toggleInputState = (isError, element, errorQuerySelector) => {
     if (isError) {
@@ -123,6 +134,20 @@ stepTwoForm.addEventListener('submit', (event) => {
             if (toggle.classList.contains('selected-right')) {
                 gamingPlan.duration = 'yearly';
             }
+            stepTwoLogo.classList.remove('active-logo');
+            stepThreeLogo.classList.add('active-logo');
+            step2Section.style.display = 'none';
+            step3Section.style.display = 'block';
+            for (let i = 0; i <= 2; i++) {
+                let addOn = addOnCards[i];
+                let addOnPricing = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} p.add-on-pricing`);
+                if (gamingPlan.duration == 'monthly') {
+                    addOnPricing.innerText = monthlyAddonPricings[i];
+                }
+                if (gamingPlan.duration == 'yearly') {
+                    addOnPricing.innerText = yearlyAddonPricings[i];
+                }
+            }
         }
     });
 });
@@ -132,4 +157,42 @@ backToStep1.addEventListener('click', () => {
     stepOneLogo.classList.add('active-logo');
     step2Section.style.display = 'none';
     step1Section.style.display = 'block';
-})
+});
+
+addOnCards.forEach(addOn => {
+    addOn.addEventListener('click', () => {
+        var activeCheckbox = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} div.active-checkbox`);
+        var defaultCheckbox = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} div.default-checkbox`);
+        let added = addOn.classList.toggle('selected-add-on');
+        if (added) {
+            activeCheckbox.style.display = 'flex';
+            defaultCheckbox.style.display = 'none';
+        } else {
+            activeCheckbox.style.display = 'none';
+            defaultCheckbox.style.display = 'flex';
+        }
+    });
+});
+
+step3Section.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addOnCards.forEach((addOn) => {
+        var addOnName = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} div.add-on-data p.add-on-title`);
+        var addOnDescription = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} div.add-on-data p.add-on-subtitle`);
+        var addOnPricing = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} p.add-on-pricing`);
+        if (addOn.classList.contains('selected-add-on')) {
+            gamingPlan.addOns.push({
+                "name": addOnName.innerText,
+                "description": addOnDescription.innerText,
+                "pricing": addOnPricing.innerText
+            });
+        }
+    })
+});
+
+backToStep2.addEventListener('click', () => {
+    stepThreeLogo.classList.remove('active-logo');
+    stepTwoLogo.classList.add('active-logo');
+    step3Section.style.display = 'none';
+    step2Section.style.display = 'block';
+});

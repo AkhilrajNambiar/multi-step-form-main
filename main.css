@@ -283,8 +283,115 @@ p.back-to-step-1:hover {
     color: hsl(213, 96%, 18%);
     cursor: pointer;
 }
+div.step-3-section {
+    margin: 3% 8%;
+    position: relative;
+    width: 100%;
+    display: none;
+}
+h2.step-3-title {
+    font-size: 30px;
+    color: hsl(213, 96%, 18%);
+}
+p.step-3-subtitle {
+    margin-top: 12px;
+    color: hsl(231, 11%, 63%);
+}
+div.add-ons {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+div.add-on-card {
+    width: 100%;
+    display: flex;
+    border-radius: 8px;
+    border: 1px solid hsl(229, 24%, 87%);
+    box-sizing: border-box;
+    padding: 16px;
+    align-items: center;
+}
+div.add-on-card:hover {
+    border: 1px solid hsl(243, 100%, 62%);
+    cursor: pointer;
+}
+div.add-on-data {
+    margin-left: 16px;
+    flex: 1;
+}
+div.default-checkbox {
+    width: 16px;
+    height: 16px;
+    border: 1px solid hsl(229, 24%, 87%);
+    border-radius: 2px;
+}
+div.active-checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    border: 1px solid hsl(243, 100%, 62%);
+    background-color: hsl(243, 100%, 62%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+div.active-checkbox i.fa-check {
+    color: white;
+    font-size: 14px;
+}
+p.add-on-title {
+    color: hsl(213, 96%, 18%);
+    font-weight: 500;
+}
+p.add-on-subtitle {
+    margin-top: 2px;
+    font-size: 14px;
+    color: hsl(231, 11%, 63%);
+}
+p.add-on-pricing {
+    color: hsl(243, 100%, 62%);
+}
+div.selected-add-on {
+    border: 1px solid hsl(243, 100%, 62%);
+    background-color: hsl(231, 100%, 99%);
+}
+form.step-3-form {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+button.submit-step-3 {
+    background-color: hsl(213, 96%, 18%);
+    color: hsl(229, 24%, 87%);
+    border: 1px solid hsl(213, 96%, 18%);
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 16px;
+}
+button.submit-step-3:hover {
+    cursor: pointer;
+    background-color: hsl(213, 96%, 36%);
+    border: 1px solid hsl(213, 96%, 36%);
+}
+p.back-to-step-2 {
+    font-weight: 500;
+    color: hsl(231, 11%, 63%);
+}
+p.back-to-step-2:hover {
+    color: hsl(213, 96%, 18%);
+    cursor: pointer;
+}
 @media screen and (max-width: 1150px) {
     div.step-2-section {
+        margin: 3% 4%;
+    }
+    div.step-3-section {
         margin: 3% 4%;
     }
 }
@@ -324,6 +431,9 @@ p.back-to-step-1:hover {
         border-radius: 10px;
         padding: 16px 0px;
         gap: 24px;
+    }
+    div.add-ons {
+        margin-top: 20px;
     }
 }
 @media screen and (max-width: 850px) {
@@ -410,6 +520,25 @@ p.back-to-step-1:hover {
         font-size: 30px;
     }
     form.step-2-form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background-color: white;
+        box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
+        padding: 0 16px;
+    }
+    div.step-3-section {
+        background-color: white;
+        padding: 32px 20px;
+        width: 80%;
+        border-radius: 16px;
+        position: absolute;
+        top: 12%;
+        box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
+    }
+    form.step-3-form {
         position: fixed;
         bottom: 0;
         left: 0;
