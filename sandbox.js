@@ -33,6 +33,8 @@ let summaryTotalLabel = document.querySelector('p.summary-total-label');
 let summaryTotalPricing = document.querySelector('p.summary-total-pricing');
 let summaryChangePlan = document.querySelector('p.summary-change-plan');
 let backToStep3 = document.querySelector('p.back-to-step-3');
+// Step 5
+let step5Section = document.querySelector('div.step-5-section');
 
 const emptyGamingPlan = {
     "name": "",
@@ -291,4 +293,10 @@ backToStep3.addEventListener('click', () => {
     stepThreeLogo.classList.add('active-logo');
     step4Section.style.display = 'none';
     step3Section.style.display = 'block';
+});
+
+step4Section.addEventListener('submit', (event) => {
+    event.preventDefault();
+    step4Section.style.display = 'none';
+    step5Section.style.display = 'flex';
 });

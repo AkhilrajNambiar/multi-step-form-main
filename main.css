@@ -493,6 +493,26 @@ p.back-to-step-3:hover {
     color: hsl(213, 96%, 18%);
     cursor: pointer;
 }
+div.step-5-section {
+    margin: 3% 8%;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+h2.step-5-title {
+    margin-top: 30px;
+    font-size: 30px;
+    color: hsl(213, 96%, 18%);
+}
+p.step-5-description {
+    margin-top: 12px;
+    color: hsl(231, 11%, 63%);
+}
 @media screen and (max-width: 1150px) {
     div.step-2-section {
         margin: 3% 4%;
@@ -672,5 +692,14 @@ p.back-to-step-3:hover {
         background-color: white;
         box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
         padding: 0 16px;
+    }
+    div.step-5-section {
+        background-color: white;
+        padding: 80px 30px;
+        width: 80%;
+        border-radius: 16px;
+        position: absolute;
+        top: 12%;
+        box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
     }
 }
