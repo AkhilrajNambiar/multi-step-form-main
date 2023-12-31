@@ -85,6 +85,7 @@ div.step-1-section {
     margin: 3% 8%;
     position: relative;
     width: 100%;
+    display: none;
 }
 h2.step-1-title {
     font-size: 30px;
@@ -387,6 +388,107 @@ p.back-to-step-2:hover {
     color: hsl(213, 96%, 18%);
     cursor: pointer;
 }
+div.step-4-section {
+    margin: 3% 8%;
+    position: relative;
+    width: 100%;
+}
+h2.step-4-title {
+    font-size: 30px;
+    color: hsl(213, 96%, 18%);
+}
+p.step-4-subtitle {
+    margin-top: 12px;
+    color: hsl(231, 11%, 63%);
+}
+div.summary-card {
+    margin-top: 40px;
+    padding: 18px;
+    background-color: hsl(217, 100%, 97%);
+    border-radius: 8px;
+}
+div.summary-plan-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+p.summary-plan-name-and-duration {
+    color: hsl(213, 96%, 18%);
+    font-weight: 500;
+}
+p.summary-change-plan {
+    color: hsl(231, 11%, 63%);
+    text-decoration: underline;
+    font-size: 14px;
+    margin-top: 4px;
+}
+p.summary-plan-pricing {
+    color: hsl(213, 96%, 18%);
+    font-weight: 700;
+}
+div.summary-total {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 18px;
+}
+p.summary-total-label {
+    color: hsl(231, 11%, 63%);
+}
+p.summary-total-pricing {
+    color: hsl(243, 100%, 62%);
+    font-size: 20px;
+    font-weight: 700;
+}
+hr.summary-plan-add-on-separator {
+    margin-top: 20px;
+    border: 1px solid hsl(229, 24%, 87%);
+}
+div.summary-add-on {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+form.step-4-form {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+p.summary-add-on-name {
+    color: hsl(231, 11%, 63%);
+    font-size: 14px;
+}
+p.summary-add-on-pricing {
+    color: hsl(213, 96%, 18%);
+    font-size: 14px;
+}
+button.submit-step-4 {
+    background-color: hsl(243, 100%, 62%);
+    color: white;
+    border: 1px solid hsl(243, 100%, 62%);
+    border-radius: 8px;
+    padding: 12px 22px;
+    font-size: 16px;
+}
+button.submit-step-4:hover {
+    cursor: pointer;
+    background-color: hsl(243, 100%, 85%);
+    border: 1px solid hsl(243, 100%, 85%);
+}
+p.back-to-step-3 {
+    font-weight: 500;
+    color: hsl(231, 11%, 63%);
+}
+p.back-to-step-3:hover {
+    color: hsl(213, 96%, 18%);
+    cursor: pointer;
+}
 @media screen and (max-width: 1150px) {
     div.step-2-section {
         margin: 3% 4%;
@@ -450,7 +552,7 @@ p.back-to-step-2:hover {
         font-size: 24px;
     }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     div.main-card {
         width: 100%;
         height: 100%;
@@ -539,6 +641,25 @@ p.back-to-step-2:hover {
         box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
     }
     form.step-3-form {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+        background-color: white;
+        box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
+        padding: 0 16px;
+    }
+    div.step-4-section {
+        background-color: white;
+        padding: 32px 20px;
+        width: 80%;
+        border-radius: 16px;
+        position: absolute;
+        top: 12%;
+        box-shadow: 2px 2px 20px hsl(229, 24%, 87%);
+    }
+    form.step-4-form {
         position: fixed;
         bottom: 0;
         left: 0;
