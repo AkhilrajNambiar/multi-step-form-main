@@ -24,6 +24,15 @@ let backToStep1 = document.querySelector('p.back-to-step-1');
 let step3Section = document.querySelector('div.step-3-section');
 let addOnCards = [...document.querySelectorAll('div.add-on-card')];
 let backToStep2 = document.querySelector('p.back-to-step-2');
+// Step 4
+let step4Section = document.querySelector('div.step-4-section');
+let summaryCard = document.querySelector('div.summary-card');
+let summaryPlanNameAndDuration = document.querySelector('p.summary-plan-name-and-duration');
+let summaryPlanPricing = document.querySelector('p.summary-plan-pricing');
+let summaryTotalLabel = document.querySelector('p.summary-total-label');
+let summaryTotalPricing = document.querySelector('p.summary-total-pricing');
+let summaryChangePlan = document.querySelector('p.summary-change-plan');
+let backToStep3 = document.querySelector('p.back-to-step-3');
 
 const emptyGamingPlan = {
     "name": "",
@@ -39,6 +48,14 @@ let monthlyPricings = ['$9/mo', '$12/mo', '$15/mo'];
 let yearlyPricings = ['$90/yr', '$120/yr', '$150/yr'];
 let monthlyAddonPricings = ['+$1/mo', '+$2/mo', '+$2/mo'];
 let yearlyAddonPricings = ['+$10/yr', '+$20/yr', '+$20/yr'];
+
+let capitalizeString = (inputString) => {
+    if (inputString.length > 0) {
+      return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+    } else {
+      return '';
+    }
+  }
 
 let toggleInputState = (isError, element, errorQuerySelector) => {
     if (isError) {
@@ -174,8 +191,68 @@ addOnCards.forEach(addOn => {
     });
 });
 
+let parsePricing = pricing => {
+    const match = pricing.match(/\d+/);
+    if (match) {
+      return parseInt(match[0], 10);
+    }
+    return 0;
+  }
+
+let setupSummaryPage = () => {
+    let totalPricing = 0;
+    summaryPlanNameAndDuration.innerText = `${gamingPlan.planName} (${capitalizeString(gamingPlan.duration)})`;
+    summaryPlanPricing.innerText = gamingPlan.planPricing;
+    if (gamingPlan.duration == 'monthly') {
+        summaryTotalLabel.innerText = 'Total (per month)';
+    }
+    if (gamingPlan.duration == 'yearly') {
+        summaryTotalLabel.innerText = 'Total (per year)';
+    }
+    totalPricing = parsePricing(gamingPlan.planPricing);
+    if (gamingPlan.addOns.length != 0) {
+        let existingPlanAddOnDivider = document.querySelector('hr.summary-plan-add-on-separator');
+        if (existingPlanAddOnDivider == null) {
+            summaryCard.insertAdjacentHTML("beforeend", '<hr class="summary-plan-add-on-separator">');
+        }
+        let existingAddOns = [...summaryCard.querySelectorAll('div.summary-add-on')];
+        existingAddOns.forEach((addOn) => {
+            summaryCard.removeChild(addOn);
+        });
+        gamingPlan.addOns.forEach((addOn) => {
+            totalPricing += parsePricing(addOn.pricing);
+            summaryCard.insertAdjacentHTML("beforeend", `
+                <div class="summary-add-on summary-add-on-${gamingPlan.addOns.indexOf(addOn) + 1}">
+                    <p class="summary-add-on-name">
+                        ${addOn.name}
+                    </p>
+                    <p class="summary-add-on-pricing">
+                        ${addOn.pricing}
+                    </p>
+                </div>
+            `)
+        });
+    } else {
+        let existingPlanAddOnDivider = document.querySelector('hr.summary-plan-add-on-separator');
+        if (existingPlanAddOnDivider != null) {
+            summaryCard.removeChild(existingPlanAddOnDivider);
+        }
+        let existingAddOns = [...summaryCard.querySelectorAll('div.summary-add-on')];
+        existingAddOns.forEach((addOn) => {
+            summaryCard.removeChild(addOn);
+        });
+    }
+    if (gamingPlan.duration == 'monthly') {
+        summaryTotalPricing.innerText = `$${totalPricing}/mo`;
+    }
+    if (gamingPlan.duration == 'yearly') {
+        summaryTotalPricing.innerText = `$${totalPricing}/yr`;
+    }
+}
+
 step3Section.addEventListener('submit', (event) => {
     event.preventDefault();
+    gamingPlan.addOns = [];
     addOnCards.forEach((addOn) => {
         var addOnName = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} div.add-on-data p.add-on-title`);
         var addOnDescription = document.querySelector(`${addOn.tagName}.${addOn.classList[1]} div.add-on-data p.add-on-subtitle`);
@@ -187,7 +264,12 @@ step3Section.addEventListener('submit', (event) => {
                 "pricing": addOnPricing.innerText
             });
         }
-    })
+        stepThreeLogo.classList.remove('active-logo');
+        stepFourLogo.classList.add('active-logo');
+        step3Section.style.display = 'none';
+        step4Section.style.display = 'block';
+    });
+    setupSummaryPage();
 });
 
 backToStep2.addEventListener('click', () => {
@@ -195,4 +277,18 @@ backToStep2.addEventListener('click', () => {
     stepTwoLogo.classList.add('active-logo');
     step3Section.style.display = 'none';
     step2Section.style.display = 'block';
+});
+
+summaryChangePlan.addEventListener('click', () => {
+    stepFourLogo.classList.remove('active-logo');
+    stepTwoLogo.classList.add('active-logo');
+    step4Section.style.display = 'none';
+    step2Section.style.display = 'block';
+});
+
+backToStep3.addEventListener('click', () => {
+    stepFourLogo.classList.remove('active-logo');
+    stepThreeLogo.classList.add('active-logo');
+    step4Section.style.display = 'none';
+    step3Section.style.display = 'block';
 });

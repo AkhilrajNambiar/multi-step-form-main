@@ -85,7 +85,6 @@ div.step-1-section {
     margin: 3% 8%;
     position: relative;
     width: 100%;
-    display: none;
 }
 h2.step-1-title {
     font-size: 30px;
@@ -392,6 +391,7 @@ div.step-4-section {
     margin: 3% 8%;
     position: relative;
     width: 100%;
+    display: none;
 }
 h2.step-4-title {
     font-size: 30px;
@@ -421,6 +421,10 @@ p.summary-change-plan {
     text-decoration: underline;
     font-size: 14px;
     margin-top: 4px;
+}
+p.summary-change-plan:hover {
+    color: hsl(243, 100%, 62%);
+    cursor: pointer;
 }
 p.summary-plan-pricing {
     color: hsl(213, 96%, 18%);
